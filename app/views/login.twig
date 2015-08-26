@@ -1,0 +1,35 @@
+{% extends "layouts/master.twig" %}
+
+
+{% block content %}
+    <div class="container" style="margin-top:10%;">
+        <div class="row">
+
+            <div class="six columns offset-by-three">
+                <h1 style="text-align: center;">Logg Inn</h1>
+            </div>
+
+
+            <form method="POST">
+                <div class="row">
+                    <div class="six columns offset-by-three">
+                        <label for="username">Brukernavn</label>
+                        <input class="u-full-width" type="text" placeholder="brukernavn" value="{{ username }}"
+                               id="username" name="username">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns offset-by-three">
+                        <label for="password">Passord</label>
+                        <input class="u-full-width" type="password" placeholder="passord" id="password" name="password">
+                        <input class="button-primary" type="submit" value="Login">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

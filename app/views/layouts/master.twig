@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <!-- Basic Page Needs
+    ----------------------------------------------------------------------------------- -->
+    <title>PRO KS - Login</title>
+    <meta charset="utf-8">
+
+    <!-- Mobile Specific Metas
+    ----------------------------------------------------------------------------------- -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT
+    ----------------------------------------------------------------------------------- -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- CSS
+    ----------------------------------------------------------------------------------- -->
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <link rel="stylesheet" href="/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="/css/select2.min.css"/>
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <!-- Favicon
+    ----------------------------------------------------------------------------------- -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+
+<!-- Primary Page Layout
+----------------------------------------------------------------------------------- -->
+{% block content %}{% endblock %}
+
+<!-- Scripts -->
+<script src="/js/jquery-2.1.4.min.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/js/select2.min.js"></script>
+<script src="/js/moment.min.js"></script>
+<script src="/js/notify.min.js"></script>
+<script src="/js/custom.js"></script>
+
+{% if flash['error'] %}
+    <script>
+        $.notify("{{ flash['error'] }}", "error");
+    </script>
+{% endif %}
+
+{% if flash['info'] %}
+    <script>
+        $.notify("{{ flash['info'] }}", "info");
+    </script>
+{% endif %}
+
+
+{% block script %}{% endblock %}
+</body>
+</html>
