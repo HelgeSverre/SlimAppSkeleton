@@ -2,6 +2,9 @@
 
 namespace Helge\Framework;
 
+
+// TODO(30 aug 2015) ~ Helge: put ssl/tls option in config file
+
 class Email
 {
 
