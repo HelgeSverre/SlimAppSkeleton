@@ -4,7 +4,7 @@ namespace Helge\Framework;
 
 /**
  * Class Session
- * Responsible for dealing with setting, getting and deleting of session variables, starts a session when initialised.
+ * Responsible for dealing with setting, getting and deleting of session variables
  */
 class Session
 {

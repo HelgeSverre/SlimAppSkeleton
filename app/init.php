@@ -88,5 +88,10 @@ $app->container->set("db",
 );
 
 
-// Include routes file containing all routes defined in application
-require('../app/routes.php');
+// Include require all route files in the routes directory
+$routes = glob(__DIR__ . "/routes/*.php");
+if ($routes) {
+    foreach ($routes as $route) {
+        require $route;
+    }
+}
