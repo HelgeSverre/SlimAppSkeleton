@@ -3,6 +3,7 @@
 require '../vendor/autoload.php';
 require 'core/Middleware.php';
 
+use Helge\Framework\Authentication;
 use Noodlehaus\Config;
 use Helge\Framework\Session;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
@@ -87,6 +88,10 @@ $app->container->set("db",
     )
 );
 
+// Initialize our authentication class
+$app->container->set("auth", function () use ($app) {
+    return new Authentication($app->db);
+});
 
 // Include require all route files in the routes directory
 $routes = glob(__DIR__ . "/routes/*.php");
