@@ -9,7 +9,7 @@ namespace Helge\Framework;
  * is pretty much just an integer, we use this class to authenticate
  * the user if their role(integer) is equal or higher than a required role
  * Class Authentication
- * @package Abax\Worker
+ * @package Helge\Framework
  */
 class Authentication
 {

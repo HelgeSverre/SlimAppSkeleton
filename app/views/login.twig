@@ -6,23 +6,23 @@
         <div class="row">
 
             <div class="six columns offset-by-three">
-                <h1 style="text-align: center;">Logg Inn</h1>
+                <h1 style="text-align: center;">{{ "login"|trans|capitalize }}</h1>
             </div>
 
 
             <form method="POST">
                 <div class="row">
                     <div class="six columns offset-by-three">
-                        <label for="username">Brukernavn</label>
-                        <input class="u-full-width" type="text" placeholder="brukernavn" value="{{ username }}"
+                        <label for="username">{{ "username"|trans|capitalize }}</label>
+                        <input class="u-full-width" type="text" placeholder="{{ "username"|trans|capitalize }}" value="{{ username }}"
                                id="username" name="username">
                     </div>
                 </div>
                 <div class="row">
                     <div class="six columns offset-by-three">
-                        <label for="password">Passord</label>
-                        <input class="u-full-width" type="password" placeholder="passord" id="password" name="password">
-                        <input class="button-primary" type="submit" value="Login">
+                        <label for="password">{{ "password"|trans|capitalize }}</label>
+                        <input class="u-full-width" type="password" placeholder="{{ "password"|trans|capitalize }}" id="password" name="password">
+                        <input class="button-primary" type="submit" value="{{ "login"|trans|capitalize }}">
                     </div>
                 </div>
             </form>

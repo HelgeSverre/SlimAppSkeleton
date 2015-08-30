@@ -1,17 +1,5 @@
 <?php
 
-/**
- * ABAX WORKER STATUS PANEL
- *
- * This application interacts with the ABAX Worker API to make the life of the
- * portfolio employees easier, it gives an overview of inactive users, the amount
- * of users a customer has ordered and how many they have gotten delivered, a customer
- * list that the users can search and find a customer's URL quickly and easily.
- *
- * @author Helge Sverre <hehe@abax.no>
- * @version 1.0.0
- */
-
 define("APP_VERSION", "1.0.0");
 
 // Check for version compatibility with PHP

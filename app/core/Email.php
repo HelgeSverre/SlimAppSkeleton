@@ -22,16 +22,16 @@ class Email
      * @param string $message the body of the email
      * @return bool if the message was sent or not
      */
-    public function send($to_email, $subject, $message)
+    public function send($to_email, $subject, $message, $from_email, $from_name)
     {
 
         $mailMethod = $this->config->get("email.method");
 
         if ($mailMethod == "mail") {
 
-            $headers = 'From: ABAX Worker <no-reply@pro-ks.no>' . "\r\n" .
-                'Reply-To: ABAX Worker <no-reply@pro-ks.no>' . "\r\n" .
-                'X-Mailer: PHP/' . phpversion();
+            $headers = "From: $from_name <$from_email>\r\n";
+            $headers .= "Reply-To: $from_name <$from_email>\r\n";
+            $headers .= 'X-Mailer: PHP/' . phpversion();
 
             return mail($to_email, $subject, $message, $headers);
 
@@ -51,8 +51,8 @@ class Email
                 $this->mailer->Password = $this->config->get("email.pass");
 
                 // Set Sender and Receiver
-                $this->mailer->setFrom("no-reply@pro-ks.no", "ABAX Worker");
-                $this->mailer->addReplyTo("no-reply@pro-ks.no", "ABAX Worker");
+                $this->mailer->setFrom($from_email, $from_name);
+                $this->mailer->addReplyTo($from_email, $from_name);
                 $this->mailer->addAddress($to_email);
 
                 // Subject and Body

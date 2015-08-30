@@ -1,21 +1,21 @@
 {
-  "minimum-stability" : "stable",
+  "minimum-stability": "stable",
   "require": {
-    "slim/slim": "*",
-    "twig/twig": "*",
-    "slim/views": "*",
-    "slim/logger": "0.1.*",
-    "nesbot/carbon": "1.14",
-    "twig/extensions": "1.2",
     "hassankhan/config": "0.8.2",
+    "nesbot/carbon": "1.14",
     "phpmailer/phpmailer": "5.2.*",
     "piwik/ini": "1.0",
+    "slim/logger": "0.1.*",
+    "slim/slim": "*",
+    "slim/views": "*",
     "symfony/translation": "2.7.3",
-    "symfony/twig-bridge": "2.7.3"
+    "symfony/twig-bridge": "2.7.3",
+    "twig/extensions": "1.2",
+    "twig/twig": "*"
   },
   "autoload": {
     "psr-4": {
-      "Abax\\Worker\\": "app/core"
+      "Helge\\Framework\\": "app/core"
     }
   }
 }

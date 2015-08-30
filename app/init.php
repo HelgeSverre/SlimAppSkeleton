@@ -1,7 +1,7 @@
 <?php
 
 require '../vendor/autoload.php';
-require 'core/SimpleAuth.php';
+require 'core/Middleware.php';
 
 use Noodlehaus\Config;
 use Helge\Framework\Session;

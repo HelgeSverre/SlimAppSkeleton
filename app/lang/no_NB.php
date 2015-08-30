@@ -1,3 +1,9 @@
 <?php
 
-return array();
+return array(
+
+    "login"     => "login",
+    "username"  => "brukernavn",
+    "password"  => "passord"
+
+);

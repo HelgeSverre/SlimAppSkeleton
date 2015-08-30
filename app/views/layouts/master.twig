@@ -3,8 +3,9 @@
 <head>
     <!-- Basic Page Needs
     ----------------------------------------------------------------------------------- -->
-    <title>PRO KS - Login</title>
+    <title>Slim App Skeleton</title>
     <meta charset="utf-8">
+
 
     <!-- Mobile Specific Metas
     ----------------------------------------------------------------------------------- -->
@@ -12,8 +13,8 @@
 
     <!-- FONT
     ----------------------------------------------------------------------------------- -->
-    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- CSS
     ----------------------------------------------------------------------------------- -->
@@ -26,16 +27,18 @@
 
     <!-- Favicon
     ----------------------------------------------------------------------------------- -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
 
 </head>
 <body>
 
 <!-- Primary Page Layout
 ----------------------------------------------------------------------------------- -->
+
 {% block content %}{% endblock %}
 
-<!-- Scripts -->
+<!-- Scripts
+  ----------------------------------------------------------------------------------- -->
 <script src="/js/jquery-2.1.4.min.js"></script>
 <script src="/js/jquery-ui.min.js"></script>
 <script src="/js/jquery.dataTables.min.js"></script>
@@ -44,9 +47,18 @@
 <script src="/js/notify.min.js"></script>
 <script src="/js/custom.js"></script>
 
+{% block script %}{% endblock %}
+
+{# Script snippets for notification messages: info, warning and error#}
 {% if flash['error'] %}
     <script>
         $.notify("{{ flash['error'] }}", "error");
+    </script>
+{% endif %}
+
+{% if flash['warning'] %}
+    <script>
+        $.notify("{{ flash['warning'] }}", "warning");
     </script>
 {% endif %}
 
@@ -56,7 +68,5 @@
     </script>
 {% endif %}
 
-
-{% block script %}{% endblock %}
 </body>
 </html>
