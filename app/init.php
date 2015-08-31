@@ -3,8 +3,8 @@
 require '../vendor/autoload.php';
 require 'core/Middleware.php';
 
-use Helge\Framework\Authentication;
 use Noodlehaus\Config;
+use Helge\Framework\Authentication;
 use Helge\Framework\Session;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
 use Symfony\Component\Translation\MessageSelector;
@@ -48,21 +48,34 @@ if ($app->config->get("development.debugging")) {
     ini_set("display_errors", "off");
 }
 
+
 // Create a translator instance
-$translator = new Translator($app->config->get("localization.language"), new MessageSelector());
-$translator->setFallbackLocales(['no_NB']);
-$translator->addLoader('php', new \Symfony\Component\Translation\Loader\PhpFileLoader());
+$app->container->set("translator", new Translator($app->config->get("localization.language"), new MessageSelector()));
+$app->translator->setFallbackLocales(['nb_NO']);
+$app->translator->addLoader('php', new \Symfony\Component\Translation\Loader\PhpFileLoader());
 
-// TODO(26.08.2015) ~ Helge: loop through all available languages and add them here
-$translator->addResource('php', '../app/lang/no_NB.php', 'no_NB');
 
+// Include require all route files in the routes directory
+$languages = glob("../app/lang/*.php");
+
+if ($languages) {
+    foreach ($languages as $language) {
+
+        // Extract the language code from the language files
+        $lastIndex = strrpos($language, DIRECTORY_SEPARATOR);
+        $lang_code = trim(trim(substr($language, $lastIndex), DIRECTORY_SEPARATOR), ".php");
+
+        // Add the language file to the translator
+        $app->translator->addResource('php', $language, $lang_code);
+    }
+}
 
 // Add parser extensions
 $view = $app->view();
 $view->parserExtensions = array(
     new \Slim\Views\TwigExtension(),
     new \Twig_Extension_Debug(),
-    new TranslationExtension($translator)
+    new TranslationExtension($app->translator)
 );
 
 // Set twig caching options
@@ -88,13 +101,15 @@ $app->container->set("db",
     )
 );
 
+
 // Initialize our authentication class
 $app->container->set("auth", function () use ($app) {
     return new Authentication($app->db);
 });
 
+
 // Include require all route files in the routes directory
-$routes = glob(__DIR__ . "/routes/*.php");
+$routes = glob("../app/routes/*.php");
 if ($routes) {
     foreach ($routes as $route) {
         require $route;
