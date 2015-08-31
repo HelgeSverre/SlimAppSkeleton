@@ -24,7 +24,7 @@ $authenticate = function ($role = 1) {
 
 
         // If we are not authenticated, redirect with an error
-        if (!$app->auth->authForRole($user, $role)) {
+        if (!$app->auth->authForRole($user["id"], $role)) {
             $app->flash("error", "Du har ikkje nok rettigheter");
             $app->redirectTo("home");
         }
