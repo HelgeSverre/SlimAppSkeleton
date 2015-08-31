@@ -2,8 +2,8 @@
 
 return array(
 
-    "login"     => "login",
-    "username"  => "brukernavn",
-    "password"  => "passord"
+    "login" => "login",
+    "username" => "brukernavn",
+    "password" => "passord"
 
 );

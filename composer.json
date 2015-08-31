@@ -4,7 +4,6 @@
     "hassankhan/config": "0.8.2",
     "nesbot/carbon": "1.14",
     "phpmailer/phpmailer": "5.2.*",
-    "piwik/ini": "1.0",
     "slim/logger": "0.1.*",
     "slim/slim": "*",
     "slim/views": "*",

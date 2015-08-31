@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6841acffc4ac5fbbe047f674ac8b4946",
+    "hash": "f6e0803abfebe36bfabbe8d6c8019e2e",
     "packages": [
         {
             "name": "hassankhan/config",
@@ -163,38 +163,6 @@
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
             "time": "2015-05-04 12:37:21"
-        },
-        {
-            "name": "piwik/ini",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/piwik/component-ini.git",
-                "reference": "6c95b8886871bec86e7d648e913b4dc88b4166a6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/piwik/component-ini/zipball/6c95b8886871bec86e7d648e913b4dc88b4166a6",
-                "reference": "6c95b8886871bec86e7d648e913b4dc88b4166a6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Piwik\\Ini\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0"
-            ],
-            "time": "2015-01-07 22:10:24"
         },
         {
             "name": "slim/logger",

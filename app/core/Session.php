@@ -28,7 +28,7 @@ class Session
      *
      * Setting the cache limiter to '' will turn off automatic sending of cache headers.
      * @option string $cache_limiter the option for the cache limiter
-    */
+     */
     public static function cacheLimiter($cache_limiter = false)
     {
         if ($cache_limiter === false)
