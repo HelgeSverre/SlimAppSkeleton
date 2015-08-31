@@ -9,9 +9,16 @@ class Email
 {
 
     /**
-     * @param \PHPMailer $phpMailer phpmailer instance
-     * @param \Noodlehaus\Config $config config instance
+     * @var \PHPMailer $phpMailer phpmailer instance
      */
+    protected $mailer;
+
+    /**
+     * @var \Noodlehaus\Config $config config instance
+     */
+    protected $config;
+
+
     public function __construct(\PHPMailer $phpMailer, $config)
     {
         $this->mailer = $phpMailer;
@@ -25,14 +32,16 @@ class Email
      * @param string $message the body of the email
      * @return bool if the message was sent or not
      */
-    public function send($to_email, $subject, $message, $from_email, $from_name)
+    public function send($to_email, $subject, $message)
     {
 
-        $mailMethod = $this->config->get("email.method");
+        $from_name      = $this->config->get("email.from_name");
+        $from_email     = $this->config->get("email.from_email");
+        $mail_method    = $this->config->get("email.method");
 
-        if ($mailMethod == "mail") {
+        if ($mail_method == "mail") {
 
-            $headers = "From: $from_name <$from_email>\r\n";
+            $headers  = "From: $from_name <$from_email>\r\n";
             $headers .= "Reply-To: $from_name <$from_email>\r\n";
             $headers .= 'X-Mailer: PHP/' . phpversion();
 
@@ -41,12 +50,12 @@ class Email
         } else if ($mailMethod = "smtp") {
             try {
                 // Bool Flags
-                $this->mailer->isHTML(false);
+                $this->mailer->isHTML($this->config->get("email.html"));
                 $this->mailer->isSMTP();
 
                 // SMTP Settings
                 $this->mailer->SMTPAuth = true;
-                $this->mailer->SMTPSecure = 'tls';
+                $this->mailer->SMTPSecure = $this->config->get("email.secure");
 
                 // Authentication
                 $this->mailer->Host = $this->config->get("email.host");
