@@ -18,14 +18,14 @@ $authenticate = function ($role = 1) {
 
         // If we're not logged in
         if (!$user) {
-            $app->flash("error", "Du er ikkje logget inn");
+            $app->flash("error", $app->translator->trans("not_logged_in"));
             $app->redirectTo("login");
         }
 
 
         // If we are not authenticated, redirect with an error
         if (!$app->auth->authForRole($user["id"], $role)) {
-            $app->flash("error", "Du har ikkje nok rettigheter");
+            $app->flash("error", $app->translator->trans("insufficient_rights"));
             $app->redirectTo("home");
         }
 

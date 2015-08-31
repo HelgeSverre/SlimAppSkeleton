@@ -4,11 +4,11 @@ require '../vendor/autoload.php';
 require 'core/Middleware.php';
 
 use Noodlehaus\Config;
-use Helge\Framework\Authentication;
 use Helge\Framework\Session;
-use Symfony\Bridge\Twig\Extension\TranslationExtension;
-use Symfony\Component\Translation\MessageSelector;
+use Helge\Framework\Authentication;
 use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\MessageSelector;
+use Symfony\Bridge\Twig\Extension\TranslationExtension;
 
 // Start session
 Session::start();
@@ -53,7 +53,6 @@ if ($app->config->get("development.debugging")) {
 $app->container->set("translator", new Translator($app->config->get("localization.language"), new MessageSelector()));
 $app->translator->setFallbackLocales(['nb_NO']);
 $app->translator->addLoader('php', new \Symfony\Component\Translation\Loader\PhpFileLoader());
-
 
 // Include require all route files in the routes directory
 $languages = glob("../app/lang/*.php");

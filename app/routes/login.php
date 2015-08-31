@@ -23,10 +23,10 @@ $app->map('/login', function () use ($app) {
 
             Session::set("user", $userInfo);
 
-            $app->flash("info", "Logged in");
+            $app->flash("info", $app->translator->trans("logged_in"));
             $app->redirect("/");
         } else {
-            $app->flashNow("error", "Wrong username or password");
+            $app->flashNow("error", $app->translator->trans("wrong_username_or_password"));
         }
     }
 
@@ -40,7 +40,7 @@ $app->get('/logout', function () use ($app) {
     // Clear session values
     Session::clear();
 
-    $app->flash("info", "You have been logged out");
+    $app->flash("info", $app->translator->trans("logged_out"));
     $app->redirectTo('login');
 
 })->name("logout");
